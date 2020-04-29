@@ -1,0 +1,18 @@
+class ApplicationController < ActionController::Base
+  I18n.locale = :ua
+  helper_method :logged_in?, :current_user
+  
+  def current_user
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    end
+  end
+
+  def logged_in?
+    !!current_user
+  end
+
+  def authorized
+    redirect_to '/auth/login' unless logged_in?
+  end
+end

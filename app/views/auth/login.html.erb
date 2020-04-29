@@ -1,0 +1,37 @@
+<div class="header-half">
+<div class="h-100 valign-wrapper header-wrapper">
+  <h3>Авторизація</h3>
+</div>
+</div>
+<section class="auth-container">
+<div class="container">
+  <div class="row">
+  <%= form_tag(nil,{:class => 'col s12 l4'}) do %>
+    
+    <div class="auth-error col s12">
+      <% if @error %>
+      <%= @error  %>
+      <% end %>
+
+    </div>
+    <div class="input-field col s12">
+      <input id="email" type="email" name="email" class="validate" />
+      <label for="email">Email</label>
+    </div>
+    <div class="input-field col s12">
+      <input id="password" type="password" name="password" class="validate" />
+      <label for="password">Password</label>
+    </div>
+    <div class="col s12">
+      <button class="waves-effect waves-light btn-small" type="submit">
+        Увійти
+      </button>
+      <a href="#" class="auth-link">
+        Зареєструватись
+      </a>
+    </div>
+  <% end %>
+
+  </div>
+</div>
+</section>

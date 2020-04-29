@@ -1,0 +1,2 @@
+class CompositionAttribute < ApplicationRecord
+end

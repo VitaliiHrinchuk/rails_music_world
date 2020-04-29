@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Musicworld</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+    />
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+      <nav class="">
+        <div class="nav-wrapper container">
+          <a href="/" class="brand-logo">Logo</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+            ><i class="material-icons">menu</i></a
+          >
+          <ul
+            id="nav-mobile"
+            data-target="mobile-demo"
+            class="right hide-on-med-and-down"
+          >
+            <li><%= link_to "Форум", "/forum" %></li>
+            <li><%= link_to "Новини", "/posts" %></li>
+            <% if logged_in? %>
+              <li><%= link_to "Вихід", "/auth/logout" %></li>
+            <% else %>
+              <li><%= link_to "Авторизація", "/auth/login" %></li>
+              <li><%= link_to "Реєстрація", "/auth/signup" %></li>
+            <% end %>
+            
+            <li><%= link_to "Створити тред", "/forum/create" %></li>
+          </ul>
+        </div>
+      </nav>
+      <ul class="sidenav" id="mobile-demo">
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <li><a href="collapsible.html">Javascript</a></li>
+      <li><a href="mobile.html">Mobile</a></li>
+    </ul>
+    <%= yield %>
+    <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l4 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">
+            You can use rows and columns here to organize your footer content.
+          </p>
+        </div>
+        <div class="col l4 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row footer-stats">
+        <div class="col l3 s6 stat">
+          <b>Total Posts</b>
+          <b>3</b>
+        </div>
+        <div class="col l3 s6 stat">
+          <b>Total Posts</b>
+          <b>3</b>
+        </div>
+        <div class="col l3 s6 stat">
+          <b>Total Posts</b>
+          <b>3</b>
+        </div>
+        <div class="col l3 s6 stat">
+          <b>Total Posts</b>
+          <b>3</b>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

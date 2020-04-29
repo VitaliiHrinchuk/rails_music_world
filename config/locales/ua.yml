@@ -1,0 +1,34 @@
+ua:
+  hello: 'Hello world'
+  activerecord:
+    attributes:
+      user:
+        email: 'Електронна пошта'
+        password: 'Пароль'
+        name: 'Ім`я'
+      topic:
+        title: 'Тема'
+        description: 'Опис'
+      message:
+        message: 'Повідомлення'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 'обовязкова'
+              taken: 'вже зареєстрована'
+            password:
+              blank: 'обовязковий'
+            name:
+              blank: 'обовязкове'
+        topic:
+          attributes:
+            title:
+              blank: 'обовязкова'
+            description:
+              blank: 'обовязковий'
+        message:
+          attributes:
+            message:
+              blank: 'обовязкове'

@@ -1,0 +1,44 @@
+<div class="header-half">
+<div class="h-100 header-text valign-wrapper header-wrapper">
+  <div class="row">
+    <div class="col s12">
+      <a href="#!" class="breadcrumb">Головна</a>
+      <a href="#!" class="breadcrumb">Новини</a>
+    </div>
+  </div>
+</div>
+</div>
+<section class="auth-container">
+<div class="container">
+  <h5>Свтврити тред</h5>
+  <div class="row">
+  <%= form_tag(nil,{:class => 'col s12 l4'}) do %>
+    <div class="auth-error col s12">
+    <% if @topic.errors.full_messages.any? %>
+      <% @topic.errors.full_messages.each do |error_message| %>
+        <%= error_message  %> <br />
+      <% end %>
+    <% end %>
+    </div>
+        <div class="input-field col s12">
+          <input id="title" name="title" type="text" />
+          <label for="title">Тема</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea
+            id="description"
+            name="description"
+            class="materialize-textarea has-character-counter"
+            data-length="500"
+          ></textarea>
+          <label for="description">Опис</label>
+        </div>
+        <div class="col s12">
+          <button class="waves-effect waves-light btn-small" type="submit">
+            Опублікувати
+          </button>
+        </div>
+      <% end %>
+  </div>
+</div>
+</section>
