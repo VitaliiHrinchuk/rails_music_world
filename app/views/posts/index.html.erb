@@ -11,60 +11,31 @@
 <section class="container single-topic">
       <div class="row posts-container">
         <div class="col l7 s12">
+        <% @data.each do |post| %>
           <div class="posts card-bg">
-            <a href="/posts/read/1"
-              ><img
-                class="posts-img"
-                src="https://www.mcgill.ca/music/files/music/styles/fullwidth_breakpoints_theme_moriarty_small_1x/public/hire-a-musician.png?itok=ud8CfEsB&timestamp=1555431792"
-                alt=""
-            /></a>
+            <a href="/posts/read/<%= post['id']%>"
+              >
+            <%= image_tag("/assets/posts/#{post['bg_img']}", class: "posts-img") %></a>
             <div class="posts-category">Piano | Musicians</div>
-            <a href="/posts/read/1">
+            <a href="/posts/read/<%= post['id']%>">
               <h2 class="posts-title">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-                laborum.
+              <%= post['theme'] %>
               </h2></a
             >
             <p class="posts-content">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo
-              iusto dolores aut. Eligendi earum fugiat culpa quas. Eligendi,
-              quas.
+            <%= strip_tags post['content'].truncate(50) %>
             </p>
             <div class="posts-footer">
               <div class="posts-comment">
-                <span class="count">2</span>
+                <span class="count"><%= post['comments'] %></span>
                 <i class="tiny material-icons">mode_comment</i>
               </div>
-              <div class="posts-date">21.03.2020</div>
+              <div class="posts-date"><%= post['created_at'].to_time.to_formatted_s(:short) %></div>
             </div>
           </div>
-          <div class="posts card-bg">
-            <a href="#"
-              ><img
-                class="posts-img"
-                src="https://www.mcgill.ca/music/files/music/styles/fullwidth_breakpoints_theme_moriarty_small_1x/public/hire-a-musician.png?itok=ud8CfEsB&timestamp=1555431792"
-                alt=""
-            /></a>
-            <div class="posts-category">Piano | Musicians</div>
-            <a href="#">
-              <h2 class="posts-title">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-                laborum.
-              </h2></a
-            >
-            <p class="posts-content">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo
-              iusto dolores aut. Eligendi earum fugiat culpa quas. Eligendi,
-              quas.
-            </p>
-            <div class="posts-footer">
-              <div class="posts-comment">
-                <span class="count">2</span>
-                <i class="tiny material-icons">mode_comment</i>
-              </div>
-              <div class="posts-date">21.03.2020</div>
-            </div>
-          </div>
+        <% end %>
+          
+    
           <ul class="pagination">
             <li class="disabled">
               <a href="#!"><i class="material-icons">chevron_left</i></a>

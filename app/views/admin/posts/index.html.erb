@@ -1,0 +1,38 @@
+<div class="row table-block">
+  <h1 class="title">Пости</h1>
+
+  <div class="col l12">
+    <table id="dataTable" >
+      <thead>
+        <tr>
+          <th>Назва</th>
+          <th data-type="date" data-format="YYYY/MM/DD">Дата створення</th>
+          <th>Редагувати</th>
+          <th>Видалити</th>
+        </tr>
+      </thead>
+      <tbody>
+    
+      <% @data.each do |post| %>
+      <tr>
+        <td><%= post['theme'].truncate(50) %></td>
+        <td><%= post['created_at'].to_time.to_formatted_s(:short) %></td>
+        <td>
+            <a class="waves-effect waves-light btn-small" href="/admin/posts/<%= post['id'] %>/edit">
+              Редагувати
+            </a>
+        </td>
+        <td>
+        <%= form_tag("/admin/posts/#{post['id']}",{:method => :delete}) do %>
+
+          <button class="waves-effect waves-light btn-small red" type="submit">
+            Видалити
+          </button>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -6,27 +6,23 @@
   <div class="col l9 s12">
     <div>
       <div class="post card-bg">
+      <%= image_tag("/assets/posts/#{@post['bg_img']}", class: "post-bg") %>
         <div class="post-header">
+        
           <h4 class="post-title">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-            asperiores sapiente tempora aliquam eos suscipit!
+            <%= @post['theme'] %>
+         
           </h4>
-          <div class="post-date">Sun Feb 24, 2019 4:14 pm</div>
+          <div class="post-date"><%= @post['created_at'].to_time.to_formatted_s(:short) %></div>
         </div>
         <div class="post-content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex odit
-          iusto rem rerum esse a, reiciendis numquam obcaecati, ut
-          blanditiis alias incidunt perferendis. Vitae suscipit minima
-          porro iusto alias hic quia distinctio, dolore atque excepturi
-          sequi consequuntur ex repellendus perspiciatis, dolores,
-          praesentium quisquam enim fugiat blanditiis dicta! Saepe,
-          deserunt soluta?
+        <%= raw @post['content'] %>
         </div>
       </div>
     </div>
     <div class="comments">
       <h5 class="comments-title">
-        Comments <span class="comments-count">5</span>
+        Коментарі <span class="comments-count"><%= @comments.length %></span>
       </h5>
       <div class="comment card-bg">
         <div class="comment-header">

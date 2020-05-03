@@ -1,0 +1,31 @@
+
+<div class="row">
+<h1 class="title">Створити пост</h1>
+<%= form_tag("/admin/posts/#{params[:id]}",{:class => 'col s12 l8 form-content',:multipart => true,:method => :put}) do %>
+  
+  <div class="file-field input-field">
+      <div class="btn">
+        <span>Додати зображення</span>
+        <input type="file" name="bg_img" accept="image/*">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+      <div class="input-field col s12">
+        <input id="theme" name="theme" type="text" value="<%= @post['theme']%>" />
+        <label for="theme">Тема</label>
+      </div>
+      <div class=" col s12 ">
+      <input type="hidden" name="content">
+       <div class="editor"><%= raw @post['content']%></div>
+      </div>
+      <div class="col s12">
+        <button class="waves-effect waves-light btn-small" type="submit">
+          Опублікувати
+        </button>
+      </div>
+    <% end %>
+</div>
+
+
