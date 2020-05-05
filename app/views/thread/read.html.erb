@@ -48,6 +48,7 @@
       <h5 class="form-title">
         Надіслати повідомлення
       </h5>
+      <% if logged_in? %>
       <%= form_tag do %>
         <div class="auth-error col s12">
           <% if flash[:error] && flash[:error].any? %>
@@ -74,6 +75,7 @@
         >
           Надіслати
         </button>
+        <% end %>
         <% end %>
     </div>
   </div>

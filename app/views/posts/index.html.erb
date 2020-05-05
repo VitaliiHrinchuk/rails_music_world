@@ -37,17 +37,27 @@
           
     
           <ul class="pagination">
-            <li class="disabled">
-              <a href="#!"><i class="material-icons">chevron_left</i></a>
-            </li>
-            <li class="active"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!">2</a></li>
-            <li class="waves-effect"><a href="#!">3</a></li>
-            <li class="waves-effect"><a href="#!">4</a></li>
-            <li class="waves-effect"><a href="#!">5</a></li>
-            <li class="waves-effect">
-              <a href="#!"><i class="material-icons">chevron_right</i></a>
-            </li>
+            <% if  @page >= 1 %>
+              <li class="waves-effect">
+                <%= link_to posts_path(page: @page - 1) do %>
+                  <i class="material-icons">chevron_left</i>
+                <% end %>
+              </li>
+            <% end %>
+          
+            <% for i in 0..@pages_count   %>
+              <li class="waves-effect <%= @page == i ? 'active' :''  %>">
+                <%= link_to i + 1, posts_path(page: i) %>
+              </li>
+            <% end %>
+
+            <% if @pages_count  > @page %>
+              <li class="waves-effect">
+                <%= link_to posts_path(page: @page + 1) do %>
+                  <i class="material-icons">chevron_right</i>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
         </div>
 

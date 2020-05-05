@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   get 'admin/auth' => 'admin/auth#index'
   get 'posts' => 'posts#index'
   get 'posts/read/:id' => 'posts#read'
-  get 'topics' => 'topics#index'
-  get 'topics/read/:id' => 'topics#read'
+  post  'posts/read/:id' => 'posts#comment'
 
   get 'auth/login' => 'auth#login'
   get 'auth/signup' => 'auth#signup'

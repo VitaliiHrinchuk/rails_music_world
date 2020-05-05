@@ -11,6 +11,8 @@ ua:
         description: 'Опис'
       message:
         message: 'Повідомлення'
+      comment:
+        text: 'Повідомлення'
     errors:
       models:
         user:
@@ -31,4 +33,8 @@ ua:
         message:
           attributes:
             message:
+              blank: 'обовязкове'
+        comment:
+          attributes:
+            text:
               blank: 'обовязкове'

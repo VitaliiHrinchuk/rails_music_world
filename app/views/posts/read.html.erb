@@ -20,55 +20,60 @@
         </div>
       </div>
     </div>
-    <div class="comments">
-      <h5 class="comments-title">
-        Коментарі <span class="comments-count"><%= @comments.length %></span>
-      </h5>
-      <div class="comment card-bg">
-        <div class="comment-header">
-          <div class="comment-author">DAskd 213</div>
-          <div class="comment-date">22 сентября 2019 в 10:43</div>
-        </div>
-        <p class="comment-content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Blanditiis odit debitis ipsam, incidunt dolor dicta
-          reprehenderit error optio nostrum possimus sunt eaque,
-          voluptatum nesciunt explicabo pariatur a aut maxime quidem.
-        </p>
-      </div>
-      <div class="comment card-bg">
-        <div class="comment-header">
-          <div class="comment-author">DAskd 213</div>
-          <div class="comment-date">22 сентября 2019 в 10:43</div>
-        </div>
-        <p class="comment-content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Blandi
-        </p>
-      </div>
-    </div>
+    <% if logged_in? %>
     <div class="comment-form">
       <h5 class="form-title">
-        Leave a comment
+        Залишити коментар
       </h5>
-      <form action="">
+    
+      <%= form_tag do %>
+        <div class="auth-error col s12">
+          <% if flash[:error] && flash[:error].any? %>
+            <% flash[:error].each do |error_message| %>
+              <%= error_message  %> <br />
+            <% end %>
+          <% end %>
+        </div>
         <div class="row">
           <div class="input-field col s12">
             <textarea
-              id="comment"
+              id="message"
               class="materialize-textarea has-character-counter"
               data-length="500"
+              name="text"
+              required
             ></textarea>
-            <label for="textarea1">Comment</label>
+            <label for="textarea1">Повідомлення</label>
           </div>
         </div>
         <button
           type="submit"
           class="waves-effect waves-light btn comment-form-btn"
         >
-          Send comment
+          Надіслати
         </button>
-      </form>
+        <% end %>
+      
     </div>
+    <%  end %>
+    <div class="comments">
+      <h5 class="comments-title">
+        Коментарі <span class="comments-count"><%= @comments.length %></span>
+      </h5>
+      <% @comments.each do |comment| %>
+      <div class="comment card-bg">
+        <div class="comment-header">
+          <div class="comment-author"><%= comment['author'] %></div>
+          <div class="comment-date"><%= comment['created_at'].to_time.strftime("%d %B %Y у %H:%M") %></div>
+        </div>
+        <p class="comment-content">
+          <%= comment['text'] %>
+        </p>
+      </div>
+      <% end  %>
+  
+    </div>
+   
   </div>
 
   <div class="col l3 s12">
