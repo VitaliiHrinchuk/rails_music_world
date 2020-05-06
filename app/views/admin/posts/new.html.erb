@@ -7,8 +7,8 @@
       <%= @img_name %>
     <% end %>
   </div>
-  <div class="file-field input-field">
-      <div class="btn">
+    <div class="file-field input-field">
+      <div class="btn btn-small">
         <span>Додати зображення</span>
         <input type="file" name="bg_img" accept="image/*">
       </div>
@@ -20,9 +20,22 @@
         <input id="theme" name="theme" type="text" />
         <label for="theme">Тема</label>
       </div>
-      <div class=" col s12 ">
-      <input type="hidden" name="content">
-       <div class="editor"></div>
+      <div class="col s12">
+        <h3 class="input-title">Категорії</h3>
+        <% @tags.each do |tag|  %>
+          <div>
+            <label>
+              <input type="checkbox" name="tags[]" value="<%= tag['id']%>" class="filled-in" />
+              <span><%= tag['name'] %></span>
+            </label>
+          </div>
+        <% end %>
+      </div>
+      <div class="col s12">
+        <h3 class="input-title">Контент</h3>
+    
+        <input type="hidden" name="content">
+        <div class="editor"></div>
       </div>
       <div class="col s12">
         <button class="waves-effect waves-light btn-small" type="submit">

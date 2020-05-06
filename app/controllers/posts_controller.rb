@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @data = @posts.map(&:attributes)
     @data.each do |post|
       post['comments'] = Comment.get_count(post['id'])
+      post['tags'] = PostTag.get_with_join(post['id']).map(&:attributes)
     end
   end
 

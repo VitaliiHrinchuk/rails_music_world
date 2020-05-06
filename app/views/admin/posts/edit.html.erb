@@ -16,10 +16,23 @@
         <input id="theme" name="theme" type="text" value="<%= @post['theme']%>" />
         <label for="theme">Тема</label>
       </div>
+      <div class="col s12">
+      <h3 class="input-title">Категорії</h3>
+      <% @tags.each do |tag|  %>
+        <div>
+          <label>
+            <input type="checkbox" name="tags[]" value="<%= tag['id']%>" class="filled-in"  <%= @post_tags.include?(tag['id']) ? 'checked' : ''%>/>
+            <span><%= tag['name'] %></span>
+          </label>
+        </div>
+      <% end %>
+    </div>
       <div class=" col s12 ">
-      <input type="hidden" name="content">
-       <div class="editor"><%= raw @post['content']%></div>
+        <h3 class="input-title">Контент</h3>
+        <input type="hidden" name="content">
+        <div class="editor"><%= raw @post['content']%></div>
       </div>
+    
       <div class="col s12">
         <button class="waves-effect waves-light btn-small" type="submit">
           Опублікувати

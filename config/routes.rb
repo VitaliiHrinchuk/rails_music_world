@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   get 'admin/auth' => 'admin/auth#index'
+  post 'admin/auth' => 'admin/auth#create'
   get 'posts' => 'posts#index'
   get 'posts/read/:id' => 'posts#read'
   post  'posts/read/:id' => 'posts#comment'

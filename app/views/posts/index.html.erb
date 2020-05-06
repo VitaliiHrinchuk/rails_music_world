@@ -16,7 +16,12 @@
             <a href="/posts/read/<%= post['id']%>"
               >
             <%= image_tag("/assets/posts/#{post['bg_img']}", class: "posts-img") %></a>
-            <div class="posts-category">Piano | Musicians</div>
+            <div class="posts-category">
+         
+              <% post['tags'].each do |tag| %>
+                <span>| <%= tag['tag_name'] %></span>
+              <% end %>
+            </div>
             <a href="/posts/read/<%= post['id']%>">
               <h2 class="posts-title">
               <%= post['theme'] %>

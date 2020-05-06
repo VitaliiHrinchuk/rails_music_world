@@ -1,1 +1,27 @@
-<h2>dsadsa</h2>
+<div class="container auth-container">
+  <div class="row ">
+ 
+  <%= form_tag(nil,{:class => 'col s12 l6 center-align '}) do %>
+    <h3>Авторизація</h3>
+    <div class="auth-error ">
+      <% if @error %>
+      <%= @error  %>
+      <% end %>
+
+    </div>
+    <div class="input-field col s12">
+      <input id="email" type="email" name="email" class="validate" />
+      <label for="email">Електронна пошта</label>
+    </div>
+    <div class="input-field col s12">
+      <input id="password" type="password" name="password" class="validate" />
+      <label for="password">Пароль</label>
+    </div>
+    <div class="col s12">
+      <button class="waves-effect waves-light btn-small" type="submit">
+        Увійти
+      </button>
+    </div>
+  <% end %>
+
+  </div>

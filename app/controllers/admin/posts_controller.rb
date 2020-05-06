@@ -1,6 +1,6 @@
 class Admin::PostsController < ApplicationController
   layout 'admin'
-
+  before_action :authorized_admin
   def index
     @posts = Post.all.select('id, theme, created_at').order(created_at: :desc)
     @data = @posts.map(&:attributes)
@@ -8,6 +8,7 @@ class Admin::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @tags = Tag.all
   end
 
   def create
@@ -24,6 +25,11 @@ class Admin::PostsController < ApplicationController
     @post = Post.create(data)
     if @post.valid?
       @post.save
+
+      tags = params[:tags]
+      tags.map do |tag|
+        PostTag.new({:tag_id => tag,:post_id => @post.id}).save
+      end
       redirect_to admin_posts_path
     else
       render :new
@@ -32,7 +38,8 @@ class Admin::PostsController < ApplicationController
 
   def edit 
     @post = Post.find(params[:id])
- 
+    @tags = Tag.all
+    @post_tags = PostTag.where(post_id: params[:id]).pluck(:tag_id)
   end
 
   def update
@@ -46,6 +53,11 @@ class Admin::PostsController < ApplicationController
     end
     @post = Post.find(params[:id])
     @post.update(data)
+    PostTag.where(:post_id => params[:id]).destroy_all
+    tags = params[:tags]
+      tags.map do |tag|
+        PostTag.new({:tag_id => tag,:post_id => @post.id}).save
+    end
     redirect_to admin_posts_path
   end
 
