@@ -1,0 +1,36 @@
+<div class="row table-block">
+  <h1 class="title">Композитори</h1>
+
+  <div class="col l12">
+    <table id="dataTable" >
+      <thead>
+        <tr>
+          <th>Ім'я</th>
+          <th>Редагувати</th>
+          <th>Видалити</th>
+        </tr>
+      </thead>
+      <tbody>
+    
+      <% @data.each do |composer| %>
+      <tr>
+        <td><%= composer['name'].truncate(50) %></td>
+        <td>
+            <a class="waves-effect waves-light btn-small" href="/admin/composers/<%= composer['id'] %>/edit">
+              Редагувати
+            </a>
+        </td>
+        <td>
+        <%= form_tag("/admin/composers/#{composer['id']}",{:method => :delete}) do %>
+
+          <button class="waves-effect waves-light btn-small red" type="submit">
+            Видалити
+          </button>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

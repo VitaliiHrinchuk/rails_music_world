@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   namespace :admin do
-    resources :posts
+    resources :posts, :tags, :composers
   end
 
   get 'admin/auth' => 'admin/auth#index'

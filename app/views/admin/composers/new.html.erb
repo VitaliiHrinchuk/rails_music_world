@@ -1,0 +1,45 @@
+
+<div class="row">
+<h1 class="title">Додати композитора</h1>
+<div class="auth-error col s12">
+  <% if @composer && @composer.errors.full_messages.any? %>
+    <% @composer.errors.full_messages.each do |error_message| %>
+      <%= error_message  %> <br />
+    <% end %>
+  <% end %>
+</div>
+<%= form_tag('/admin/composers',{:class => 'col s12 l8 form-content',:multipart => true}) do %>
+    <div class="file-field input-field">
+      <div class="btn btn-small">
+        <span>Додати аватар</span>
+        <input type="file" name="avatar" accept="image/*">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+      <div class="input-field col s12">
+        <input id="name" name="name" type="text" />
+        <label for="name">Ім'я</label>
+      </div>
+       <div class="input-field col s12">
+          <input type="text" class="datepicker" name="date_of_birth">
+          <label for="name">Дата народження</label>
+      </div>
+     <div class="input-field col s12">
+          <input type="text" class="datepicker" name="date_of_death">
+          <label for="name">Дата смерті</label>
+      </div>
+      <div class="col s12">
+          <textarea id="description" name="description"  class="materialize-textarea"></textarea>
+          <label for="description">Опис</label>
+      </div>
+      <div class="col s12">
+        <button class="waves-effect waves-light btn-small" type="submit">
+          Опублікувати
+        </button>
+      </div>
+    <% end %>
+</div>
+
+

@@ -33,8 +33,31 @@ document.addEventListener('turbolinks:load', function () {
   }
 
   let table = document.querySelector('#dataTable');
+  if (table) {
+    let dataTable = new DataTable(table, {
+      searchable: true,
+    });
+  }
 
-  let dataTable = new DataTable(table, {
-    searchable: true,
+  let datepickers = document.querySelectorAll('.datepicker');
+  M.Datepicker.init(datepickers, {
+    yearRange: 1000,
+    format: 'dd/mm/yyyy',
+    i18n: {
+      monthsShort: [
+        'Січ',
+        'Лют',
+        'Бер',
+        'Квіт',
+        'Трав',
+        'Чер',
+        'Лип',
+        'Сер',
+        'Вер',
+        'Жов',
+        'Лис',
+        'Груд',
+      ],
+    },
   });
 });

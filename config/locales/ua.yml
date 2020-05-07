@@ -13,6 +13,8 @@ ua:
         message: 'Повідомлення'
       comment:
         text: 'Повідомлення'
+      tag:
+        name: 'Назва тегу'
     errors:
       models:
         user:
@@ -38,3 +40,7 @@ ua:
           attributes:
             text:
               blank: 'обовязкове'
+        tag:
+          attributes:
+            name:
+              blank: 'обовязкова'
