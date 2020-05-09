@@ -44,13 +44,20 @@ h5 {
   margin: 10px 0;
   margin-bottom: 20px !important;
 }
-.table-block {
-  background: #fff;
-  border-radius: 5px;
-  margin: 0 10px;
-  @include shadow();
-  padding: 10px;
+.table {
+  &-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-block {
+    background: #fff;
+    border-radius: 5px;
+    margin: 0 10px;
+    @include shadow();
+    padding: 10px;
+  }
 }
+
 th {
   & a {
     color: #000;

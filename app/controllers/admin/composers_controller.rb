@@ -24,23 +24,28 @@ class Admin::ComposersController < ApplicationController
     @composer = Composer.create(data)
     if @composer.valid?
       @composer.save
-      redirect_to admin_tags_path
+      redirect_to admin_composers_path
     else
       render :new
     end
   end
 
   def edit 
-    @tag = Tag.find(params[:id])
+    @composer = Composer.find(params[:id])
   end
 
   def update
-    data = params.permit(:name)
-
-    @tag = Tag.find(params[:id])
-    @tag.update(data)
-
-    redirect_to admin_tags_path
+    data = params.permit(:name, :date_of_birth, :date_of_death, :description)
+    if params[:avatar].present?
+      file = params[:avatar]
+      data[:avatar] = file.original_filename
+      File.open(Rails.root.join('app','assets', 'images', 'composers', file.original_filename), 'wb') do |f|
+        f.write(file.read)
+      end
+    end
+    @composer = Composer.find(params[:id])
+    @composer.update(data) 
+    redirect_to admin_composers_path
   end
 
   def destroy

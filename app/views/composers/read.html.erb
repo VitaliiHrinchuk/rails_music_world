@@ -1,0 +1,28 @@
+<div class="header-half">
+<div class="h-100 header-text valign-wrapper header-wrapper">
+  <div class="row">
+    <div class="col s12">
+      <a href="#!" class="breadcrumb">Головна</a>
+      <a href="#!" class="breadcrumb">Композитори</a>
+      <a href="#!" class="breadcrumb"><%= @composer['name']%></a>
+    </div>
+  </div>
+</div>
+</div>
+<section class="container compdet">
+  <div class="row">
+    <div class="col s12 l3">
+    <%= image_tag("/assets/composers/#{@composer['avatar']}", class: "compdet-img") %></a>
+    
+    </div>
+    <div class="col s12 l9">
+      <h3><%= @composer['name']%></h3>
+      <div><b class="compdet-attr">Дата народження:</b><%= @composer['date_of_birth'].to_date.strftime('%d %B %Y')%></div>
+      <% if @composer['date_of_death']%>
+      <div><b class="compdet-attr">Дата смерті:</b><%= @composer['date_of_death'].to_date.strftime('%d %B %Y')%></div>
+      <% end %>
+      <h4 class="compdet-title">Біографія</h4>
+      <p><%= @composer['description']%></p>
+    </div>
+  </div>
+</section>

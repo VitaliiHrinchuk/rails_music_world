@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   namespace :admin do
+    root :to => "posts#index"
     resources :posts, :tags, :composers
   end
 
@@ -22,6 +23,9 @@ Rails.application.routes.draw do
   get 'forum/create' => 'thread#create_form'
   post 'forum/create' => 'thread#create'
   post 'forum/read/:id' => 'thread#comment'
+
+  get 'composers' => 'composers#index'
+  get 'composers/read/:id' => 'composers#read'
 
   root 'home#index'
 end

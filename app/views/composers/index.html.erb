@@ -1,0 +1,31 @@
+<div class="header-half">
+<div class="h-100 header-text valign-wrapper header-wrapper">
+  <div class="row">
+    <div class="col s12">
+      <a href="#!" class="breadcrumb">Головна</a>
+      <a href="#!" class="breadcrumb">Композитори</a>
+    </div>
+  </div>
+</div>
+</div>
+<section class="container">
+
+<div class="row">
+<% @data.each do |composer| %>
+  <div class="col s6 l3">
+    <div class="composer">
+    <div class="composer-avatar">
+      <div class="composer-image">
+        <%= image_tag("/assets/composers/#{composer['avatar']}") %>
+      </div>
+      <div class="composer-detail">
+        <a href="/composers/read/<%= composer['id']%>">Деталі</a>
+      </div>
+    </div>
+      
+      <p class="composer-name"><%=composer['name']%></p>
+    </div>
+  </div>
+<% end %>
+</div>
+</section>

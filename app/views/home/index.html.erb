@@ -111,57 +111,36 @@
 <section class="container">
 <h4 class="center-align mb-2 mt-2">Останні новини</h4>
 <div class="row">
+ <% @latest_posts.each do |post| %>
   <div class="col l3 s12">
     <div class="card card-bg">
       <div class="card-image">
-        <img
-          src="http://musicworldcollege.000webhostapp.com/public/img/posts/856-7240.jpg"
-        />
-        <div class="card-date">12-12-2020</div>
+      <div class="img" style="background-image: url('/assets/posts/<%=post['bg_img'] %>')"></div>
+        
+        <div class="card-date"><%= post['created_at'].to_time.strftime('%d-%m-%Y') %></div>
       </div>
       <div class="card-content">
-        <span class="card-title">Card Title</span>
-        <p>
-          I am a very simple card. I am good at containing small bits of
-          information. I am convenient because I require little markup to
-          use effectively.
+       <div >
+          <% post['tags'].each do |tag| %>
+            <span class="card-tag">| <%= tag['tag_name'] %></span>
+          <% end %>
+        </div>
+        <span class="card-title"><a href="/posts/read/<%= post['id']%>"><%= post['theme'].truncate(50)%></a></span>
+        <p class="card-desc">
+         <%= strip_tags post['content'].truncate(130) %>
         </p>
         <div class="card-comment">
           <i class="tiny material-icons">mode_comment</i>
-          <span class="count">2</span>
+          <span class="count"><%= post['comments'] %></span>
         </div>
       </div>
 
       <div class="card-action">
-        <a href="#">Read</a>
+        <a href="/posts/read/<%= post['id']%>">Read</a>
       </div>
     </div>
   </div>
-  <div class="col l3 s12">
-    <div class="card card-bg">
-      <div class="card-image">
-        <img
-          src="http://musicworldcollege.000webhostapp.com/public/img/posts/856-7240.jpg"
-        />
-        <div class="card-date">12-12-2020</div>
-      </div>
-      <div class="card-content">
-        <span class="card-title">Card Title</span>
-        <p>
-          I am a very simple card. I am good at containing small bits of
-          information. I am convenient because I require little markup to
-          use effectively.
-        </p>
-        <div class="card-comment">
-          <i class="tiny material-icons">mode_comment</i>
-          <span class="count">2</span>
-        </div>
-      </div>
+  <% end %>
 
-      <div class="card-action">
-        <a href="#">Read</a>
-      </div>
-    </div>
-  </div>
 </div>
 </section>
