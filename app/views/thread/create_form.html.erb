@@ -25,6 +25,16 @@
           <label for="title">Тема</label>
         </div>
         <div class="input-field col s12">
+        <select name="category_id">
+          <option value="" disabled selected>Оберіть категорію</option>
+          <% @categories.each do |category| %>
+            <option value="<%=category['id']%>"><%=category['name']%></option>
+          <% end %>
+
+        </select>
+        <label>Категорія</label>
+      </div>
+        <div class="input-field col s12">
           <textarea
             id="description"
             name="description"

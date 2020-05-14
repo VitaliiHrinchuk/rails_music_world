@@ -1,7 +1,9 @@
 class ThreadController < ApplicationController
   before_action :authorized, only: [:create_form]
   def index
-    @topics = Topic.left_joins(:user).select("users.id as user_id, users.name AS 'author', title, description, threads.created_at, threads.id AS id")
+    @topics = Topic.left_joins(:user).left_joins(:thread_category)
+                      .select("users.id as user_id, users.name AS 'author', title, description, threads.created_at, threads.id AS id, thread_category.name as category,thread_category.id as category_id")
+                      .order(created_at: :desc)
     @data = @topics.map(&:attributes)
   end
 
@@ -39,11 +41,11 @@ class ThreadController < ApplicationController
 
   def create_form
     @topic = Topic.new
-    
+    @categories = ThreadCategory.all
   end
 
   def topic_params
-    params.permit(:title, :description)
+    params.permit(:title, :description, :category_id)
   end
 
   

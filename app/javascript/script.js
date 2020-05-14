@@ -9,4 +9,5 @@ document.addEventListener('DOMContentLoaded', function () {
     fullWidth: true,
   });
   M.CharacterCounter.init(document.querySelectorAll('.has-character-counter'));
+  M.FormSelect.init(document.querySelectorAll('select'));
 });

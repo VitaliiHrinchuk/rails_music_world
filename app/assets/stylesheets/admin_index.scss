@@ -32,6 +32,10 @@ h5 {
 }
 .sidenav {
   background: #30323e;
+  & .material-icons {
+    color: #a8abb4 !important;
+  }
+
   & li > a {
     color: #a8abb4;
   }

@@ -12,7 +12,6 @@
 <div class="row">
   <div class="col l9 s12">
     <div class="sec card-bg">
-      <div class="sec-header"><h5>Main Category</h5></div>
       <div class="sec-content">
       <% @data.each do |topic| %>
         <div class="category">
@@ -28,11 +27,10 @@
               <div class="category-desc"><%= topic['description'].truncate(110) %></div>
             </div>
             <div class="category-stat">
-              <div>1 topics</div>
-              <div>1 posts</div>
+              <div><a href="#"><%= topic['category'] %></a></div>
             </div>
             <div class="category-meta">
-              <div>Wlcome to php</div>
+  
               <div>by <span class="author"><%= topic['author'] %></span></div>
               <div><%= topic['created_at'].to_time.to_formatted_s(:short)   %></div>
             </div>
@@ -42,55 +40,7 @@
     
       </div>
     </div>
-    <div class="sec card-bg">
-      <div class="sec-header"><h5>Main Category</h5></div>
-      <div class="sec-content">
-        <div class="category">
-          <div class="category-icon">
-            <span class="icon"
-              ><i class="tiny material-icons">mode_comment</i></span
-            >
-          </div>
-          <div class="category-info">
-            <div class="category-detail">
-              <a href="#">Information</a>
-              <div class="category-desc">Placeholder forum</div>
-            </div>
-            <div class="category-stat">
-              <div>1 topics</div>
-              <div>1 posts</div>
-            </div>
-            <div class="category-meta">
-              <div>Wlcome to php</div>
-              <div>by <span class="author">User</span></div>
-              <div>Sun Feb 24, 2019 4:26 pm</div>
-            </div>
-          </div>
-        </div>
-        <div class="category">
-          <div class="category-icon">
-            <span class="icon"
-              ><i class="tiny material-icons">mode_comment</i></span
-            >
-          </div>
-          <div class="category-info">
-            <div class="category-detail">
-              <a href="#">Information</a>
-              <div class="category-desc">Placeholder forum</div>
-            </div>
-            <div class="category-stat">
-              <div>1 topics</div>
-              <div>1 posts</div>
-            </div>
-            <div class="category-meta">
-              <div>Wlcome to php</div>
-              <div>by <span class="author">User</span></div>
-              <div>Sun Feb 24, 2019 4:26 pm</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </div>
   <div class="col l3 s12">
     <div class="card-panel card-bg">

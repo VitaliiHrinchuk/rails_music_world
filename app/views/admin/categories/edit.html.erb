@@ -1,0 +1,25 @@
+
+<div class="row">
+<h1 class="title">Створити тег</h1>
+<div class="auth-error col s12">
+  <% if @category && @category.errors.full_messages.any? %>
+    <% @category.errors.full_messages.each do |error_message| %>
+      <%= error_message  %> <br />
+    <% end %>
+  <% end %>
+</div>
+<%= form_tag("/admin/categories/#{params[:id]}",{:class => 'col s12 l8 form-content',:method => :put}) do %>
+      <div class="input-field col s12">
+        <input id="name" name="name" type="text" value="<%= @category['name']%>" />
+        <label for="name">Назва</label>
+      </div>
+
+      <div class="col s12">
+        <button class="waves-effect waves-light btn-small" type="submit">
+          Опублікувати
+        </button>
+      </div>
+    <% end %>
+</div>
+
+

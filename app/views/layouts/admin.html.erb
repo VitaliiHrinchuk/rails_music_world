@@ -17,12 +17,14 @@
   <body>
     <% if is_admin? %>
       <ul id="slide-out" class="sidenav sidenav-fixed">
-        <li><%= link_to "Пости", admin_posts_path %></li>
-        <li><%= link_to "Створити пост", new_admin_post_path %></li>
-        <li><%= link_to "Теги", admin_tags_path %></li>
-        <li><%= link_to "Додати тег", new_admin_tag_path %></li>
-        <li><%= link_to "Композитори", admin_composers_path %></li>
-        <li><%= link_to "Додати композитора", new_admin_composer_path %></li>
+        <li><%= link_to "<i class='material-icons'>receipt</i>Пости".html_safe, admin_posts_path %></li>
+        <li><%= link_to "<i class='material-icons'>queue</i>Створити пост".html_safe, new_admin_post_path %></li>
+        <li><%= link_to "<i class='material-icons'>label</i>Теги".html_safe, admin_tags_path %></li>
+        <li><%= link_to "<i class='material-icons'>add</i>Додати тег".html_safe, new_admin_tag_path %></li>
+        <li><%= link_to "<i class='material-icons'>music_note</i>Композитори".html_safe, admin_composers_path %></li>
+        <li><%= link_to "<i class='material-icons'>add_circle_outline</i>Додати композитора".html_safe, new_admin_composer_path %></li>
+        <li><%= link_to "<i class='material-icons'>list</i>Список категорій".html_safe, admin_categories_path %></li>
+         <li><%= link_to "<i class='material-icons'>playlist_add</i>Додати Категорію".html_safe, new_admin_category_path %></li>
       </ul>
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <% end %>
