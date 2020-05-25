@@ -1,10 +1,27 @@
 class ThreadController < ApplicationController
   before_action :authorized, only: [:create_form]
+
+  TOPICS_PER_PAGE = 5
+
   def index
+    @page = params.fetch(:page, 0).to_i
+    condition = {}
+    category = params.fetch(:category, nil)
+    order_by = params.fetch(:order_by, :created_at)
+    dir = params.fetch(:dir, :desc)
+  
+  
     @topics = Topic.left_joins(:user).left_joins(:thread_category)
-                      .select("users.id as user_id, users.name AS 'author', title, description, threads.created_at, threads.id AS id, thread_category.name as category,thread_category.id as category_id")
-                      .order(created_at: :desc)
+                      .select("users.id as user_id, users.name AS 'author', title, description, threads.created_at as created_at, threads.id AS id, thread_category.name as category,thread_category.id as category_id")
+                      .where(condition)
+                      .offset(@page * TOPICS_PER_PAGE)
+                      .limit(TOPICS_PER_PAGE)
+                      .sanitized_order(order_by, dir)
+
+                     
     @data = @topics.map(&:attributes)
+    @total = Post.count
+    @pages_count = @total / TOPICS_PER_PAGE
   end
 
   def read

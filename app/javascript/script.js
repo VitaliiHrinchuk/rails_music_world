@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('turbolinks:load', function () {
   let elems = document.querySelectorAll('.sidenav');
   let instances = M.Sidenav.init(elems);
   let carousels = document.querySelectorAll('.carousel');

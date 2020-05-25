@@ -10,6 +10,15 @@
 </div>
 <section class="container">
 <div class="row">
+<div class="input-field col l4 s12">
+    <select onchange="location = this.value;">
+      <option value="" disabled selected>Обрати сортування</option>
+      <option value="<%= forum_path(order_by: :created_at, dir: :desc) %>">Новіші</option>
+      <option value="<%= forum_path(order_by: :created_at, dir: :asc) %>">Старіші</option>
+
+    </select>
+    <label>Сортувати за</label>
+  </div>
   <div class="col l9 s12">
     <div class="sec card-bg">
       <div class="sec-content">
@@ -27,7 +36,10 @@
               <div class="category-desc"><%= topic['description'].truncate(110) %></div>
             </div>
             <div class="category-stat">
-              <div><a href="#"><%= topic['category'] %></a></div>
+            <% if topic['category'] %>
+
+              <div><%= link_to topic['category'], forum_path(category: topic['category_id']) %></div>
+              <% end %>
             </div>
             <div class="category-meta">
   
@@ -38,6 +50,29 @@
         </div>
         <% end %>
     
+          <ul class="pagination">
+            <% if  @page >= 1 %>
+              <li class="waves-effect">
+                <%= link_to forum_path(params.permit(:dir, :order_by).merge(page: @page - 1)) do %>
+                  <i class="material-icons">chevron_left</i>
+                <% end %>
+              </li>
+            <% end %>
+          
+            <% for i in 0..@pages_count   %>
+              <li class="waves-effect <%= @page == i ? 'active' :''  %>">
+                <%= link_to i + 1, forum_path(params.permit(:dir, :order_by).merge(page: i)) %>
+              </li>
+            <% end %>
+
+            <% if @pages_count  > @page %>
+              <li class="waves-effect">
+                <%= link_to forum_path(params.permit(:dir, :order_by).merge(page: @page + 1)) do %>
+                  <i class="material-icons">chevron_right</i>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
       </div>
     </div>
     
