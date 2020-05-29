@@ -8,6 +8,16 @@ class Post < ApplicationRecord
   validates :bg_img, presence: true
 
 
+
+  def self.search(search)
+    if search
+      self.where('theme LIKE :search', search: "%#{search}%")
+    else
+      self.all
+    end
+  end
+  
+  
   
 
 

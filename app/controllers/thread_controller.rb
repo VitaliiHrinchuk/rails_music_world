@@ -38,6 +38,7 @@ class ThreadController < ApplicationController
       @topic.save
       redirect_to controller: 'thread', action: 'read', id: @topic.id
     else 
+      @categories = ThreadCategory.all
       render :create_form
     end
   end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => "posts#index"
-    resources :posts, :tags, :composers, :categories
+    resources :posts, :tags, :composers, :categories, :comments, :users
   end
 
   get 'admin/auth' => 'admin/auth#index'

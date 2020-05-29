@@ -3,7 +3,8 @@ class PostsController < ApplicationController
 
   def index
     @page = params.fetch(:page, 0).to_i
-    @posts = Post.all.select('id, theme, created_at, bg_img, content').offset(@page * POSTS_PER_PAGE).limit(POSTS_PER_PAGE).order(created_at: :desc)
+    @q = params.fetch(:q, nil)
+    @posts = Post.all.select('id, theme, created_at, bg_img, content').search(@q).offset(@page * POSTS_PER_PAGE).limit(POSTS_PER_PAGE).order(created_at: :desc)
     @total = Post.count
     @pages_count = @total / POSTS_PER_PAGE
  

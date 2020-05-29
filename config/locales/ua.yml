@@ -9,6 +9,8 @@ ua:
       topic:
         title: 'Тема'
         description: 'Опис'
+        category_id: 'Категорія'
+
       message:
         message: 'Повідомлення'
       comment:
@@ -32,6 +34,10 @@ ua:
               blank: 'обовязкова'
             description:
               blank: 'обовязковий'
+            category_id:
+              blank: 'обовязкова'
+            thread_category:
+              required: ''
         message:
           attributes:
             message:

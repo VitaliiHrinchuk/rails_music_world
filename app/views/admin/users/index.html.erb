@@ -1,0 +1,35 @@
+<div class="row table-block">
+  <h1 class="title">Теги</h1>
+
+  <div class="col l12">
+    <table id="dataTable" >
+      <thead>
+        <tr>
+          <th>Ім'я</th>
+          <th>Пошта</th>
+          <th>Адміністратор</th>
+          <th>Зробити адміністратором</th>
+        </tr>
+      </thead>
+      <tbody>
+    
+      <% @data.each do |user| %>
+      <tr>
+        <td><%= user['name'].truncate(50) %></td>
+        <td><%= user['email'].truncate(50) %></td>
+        <td><%= user['is_admin'] ? "Так" : "Ні"%></td>
+        <td>
+        <%= form_tag("/admin/users/#{user['id']}",{:method => :patch}) do %>
+          <input type="hidden" name="is_admin" value="<%= user['is_admin'] ? '0' : '1'%>">
+          <button class="waves-effect waves-light btn-small  <%= !user['is_admin'] ? "green" :  "red" %>" type="submit">
+            <%= !user['is_admin'] ? "Зробити адміністратором" :  "Забрати права адміністратора" %>
+          </button>
+          <% end %>
+        </td>
+      
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
